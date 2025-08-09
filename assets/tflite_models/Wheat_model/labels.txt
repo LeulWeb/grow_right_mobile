@@ -1,0 +1,4 @@
+0 stripe rust
+1 septoria
+2 Healthy
+3 non Wheat leaf

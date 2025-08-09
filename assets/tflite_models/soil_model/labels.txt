@@ -1,0 +1,8 @@
+0 Alluvial Soil
+1 Arid Soil
+2 Black Soil
+3 Laterite Soil
+4 Mountain Soil
+5 Red Soil
+6 Yellow Soil
+7 Non Soil
