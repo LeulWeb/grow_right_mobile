@@ -24,7 +24,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Grow Right")),
+      appBar: AppBar(
+        title: Text(
+          "Grow Right",
+          style: TextStyle(color: Theme.of(context).primaryColor),
+        ),
+      ),
       body: _pages[_currentIndex],
       bottomNavigationBar: CircleNavBar(
         activeIndex: _currentIndex,

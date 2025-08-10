@@ -19,6 +19,13 @@ dependencies:
   flutter_launcher_icons: ^0.14.4
   circle_nav_bar: ^2.2.0
   hugeicons: ^0.0.11
+  geolocator: ^14.0.2
+  geocoding: ^4.0.0
+  flutter_map: ^8.2.1
+  latlong2: ^0.9.1
+  animated_custom_dropdown: ^3.1.1
+  flutter_svg: ^2.2.0
+  image_picker: ^1.1.2
 
 
 flutter_icons:
@@ -34,4 +41,10 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
-    - assets/tflite_models/
+    - assets/tflite_models/coffee_model/
+    - assets/tflite_models/mango_model/
+    - assets/tflite_models/soil_model/
+    - assets/tflite_models/Wheat_model/
+
+
+
