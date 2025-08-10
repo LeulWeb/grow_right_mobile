@@ -136,7 +136,7 @@ class _InputScreenState extends State<InputScreen> {
         confidence: "$confidenceScore%",
         disease: widget.scanner.disease,
         resultLabel: resultLabel,
-        scannedImage: imagePath, // Pass file path as string
+        scannedImage: image!, // Pass file path as string
         createdAt: DateTime.now().toIso8601String(),
       );
 

@@ -55,7 +55,7 @@ class ScanResultPage extends StatelessWidget {
                 child: SizedBox(
                   width: double.infinity,
                   height: MediaQuery.of(context).size.height * 0.3,
-                  child: Image.network(result.scannedImage, fit: BoxFit.cover),
+                  child: Image.file(result.scannedImage!, fit: BoxFit.cover),
                 ),
               ),
               const SizedBox(height: 8),

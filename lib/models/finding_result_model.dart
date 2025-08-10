@@ -1,6 +1,8 @@
+import 'dart:io';
+
 class FindingResultModel {
   final String disease;
-  final String scannedImage;
+  final File scannedImage;
   final String confidence;
   final String resultLabel;
   final String createdAt;
