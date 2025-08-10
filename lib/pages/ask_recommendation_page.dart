@@ -1,5 +1,9 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:grow_right_mobile/models/farmer_request_payload.dart';
+import 'package:grow_right_mobile/services/farmer_request_services.dart';
+import 'package:grow_right_mobile/utils/show_snackbar.dart';
 import 'package:http/http.dart' as http;
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart' as geo;
@@ -67,6 +71,8 @@ class AskRecommendationPage extends StatefulWidget {
 
 class _AskRecommendationPageState extends State<AskRecommendationPage> {
   final _formKey = GlobalKey<FormState>();
+
+  final _farmerService = FarmerRequestService();
 
   // Location (required)
   double? _lat;
@@ -177,7 +183,7 @@ class _AskRecommendationPageState extends State<AskRecommendationPage> {
     }
   }
 
-  void _submit() {
+  Future<void> _submit() async {
     final isValid = _formKey.currentState?.validate() ?? false;
 
     if (_lat == null ||
@@ -190,32 +196,36 @@ class _AskRecommendationPageState extends State<AskRecommendationPage> {
     }
     if (!isValid) return;
 
-    final payload = {
-      "lat": _lat,
-      "lng": _lng,
-      "address": _address,
-      "soil_id": _selectedSoil!.id,
-      "season_id": _selectedSeason!.id,
-      "goal": _selectedGoalValue, // value string (not the key)
-      "has_irrigation": _hasIrrigation,
-    };
-
-    final jsonString = const JsonEncoder.withIndent('  ').convert(payload);
-    debugPrint("Recommendation payload:\n$jsonString");
-
-    showDialog(
-      context: context,
-      builder: (_) => AlertDialog(
-        title: const Text("Payload Logged"),
-        content: SingleChildScrollView(child: Text(jsonString)),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text("OK"),
-          ),
-        ],
-      ),
+    final payload = FarmerRequestPayload(
+      lat: _lat!,
+      lng: _lng!,
+      address: _address!,
+      soilId: _selectedSoil!.id,
+      seasonId: _selectedSeason!.id,
+      goalValue: _selectedGoalValue!, // value string
+      hasIrrigation: _hasIrrigation,
     );
+
+    // Show loading feedback
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text('Submitting...')));
+
+    try {
+      final message = await _farmerService.createFarmerRequest(payload);
+      if (!mounted) return;
+
+      showSnackBar(context, 'Success: $message', Colors.green);
+
+      Future.delayed(const Duration(milliseconds: 500), () {
+        if (mounted) {
+          context.push("/home"); // requires GoRouter import
+        }
+      });
+    } catch (e) {
+      if (!mounted) return;
+      showSnackBar(context, 'Error: $e', Colors.red);
+    }
   }
 
   @override
