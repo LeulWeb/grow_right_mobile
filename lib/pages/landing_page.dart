@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:grow_right_mobile/data/scanner_list.dart';
 import 'package:grow_right_mobile/widgets/action_widget.dart';
 import 'package:grow_right_mobile/widgets/greeting_widget.dart';
 import 'package:grow_right_mobile/widgets/padding_wrapper.dart';
@@ -38,7 +39,7 @@ class LandingPage extends StatelessWidget {
               description: "Analyze your soil type",
               iconPath: "assets/images/lab.svg",
               action: () {
-                context.push("/modelList");
+                context.push("/inputScan", extra: scannerList[3]);
               },
             ),
             const SizedBox(height: 12),

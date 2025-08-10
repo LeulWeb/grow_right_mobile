@@ -40,9 +40,9 @@ class GreetingWidget extends StatelessWidget {
                   const SizedBox(width: 12),
                   Text(
                     "Hello 👋🏾 TestUser",
-                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                      color: Theme.of(context).primaryColor,
-                    ),
+                    style: Theme.of(
+                      context,
+                    ).textTheme.titleMedium!.copyWith(color: Colors.white),
                   ),
                 ],
               ),
@@ -53,9 +53,9 @@ class GreetingWidget extends StatelessWidget {
             padding: const EdgeInsets.all(12),
             child: Text(
               "Let's Optimize your farming Today with Smart AI",
-              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                color: Theme.of(context).primaryColor,
-              ),
+              style: Theme.of(
+                context,
+              ).textTheme.bodyMedium!.copyWith(color: Colors.white),
             ),
           ),
         ],

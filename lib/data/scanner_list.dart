@@ -21,5 +21,11 @@ List<TfliteModel> scannerList = [
     labelPath: "assets/tflite_models/Wheat_model/labels.txt",
     accuracy: "90",
   ),
+   const TfliteModel(
+    disease: "Soil Detection",
+    modelPath: "assets/tflite_models/soil_model/soil_model.tflite",
+    labelPath: "assets/tflite_models/soil_model/labels.txt",
+    accuracy: "90",
+  ),
 
 ];

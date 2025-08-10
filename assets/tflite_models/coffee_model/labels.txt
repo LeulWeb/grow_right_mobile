@@ -1,5 +1,5 @@
-0 Cerscospora
-1 Leaf rust
-2 Phoma
-3 Healthy
-4 non-leaf objects
+Cerscospora
+Leaf rust
+Phoma
+Healthy
+non-leaf objects
