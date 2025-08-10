@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   List<Widget> _pages = [
     const LandingPage(),
     const RecommendationPage(),
-    const ProfilePage(),
+    ProfilePage(),
   ];
 
   @override
